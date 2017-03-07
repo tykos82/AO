@@ -67,11 +67,11 @@ def estrai_numerogiornata(titolo):
     return numero_quattrocifre
 
 
-def prova():
-  test_str = "14 maggio 2002, day 12, 23:50 GMT+5: Treno n10 Baikal Express da Mosca a Irkutsk, linea Transiberiana - Day 2"
-  regex = r"day [0-9]*"
-  matches = re.findall(regex, test_str)
-  print matches[0]
+#def prova():
+#  test_str = "14 maggio 2002, day 12, 23:50 GMT+5: Treno n10 Baikal Express da Mosca a Irkutsk, linea Transiberiana - Day 2"
+#  regex = r"day [0-9]*"
+#  matches = re.findall(regex, test_str)
+#  print matches[0]
  
  
 def provapython():
@@ -120,7 +120,7 @@ def provapython():
           wks_tappe.append_row([titolo, link, numero_quattrocifre, timestamp])
           #list_of_lists_tappe.sort(key = lambda row: row[2]) #ordina lista di liste
       else: #(link not in elenco_bonus_gsheet):
-        print "OK"
+        #print "OK"
         if (link not in elenco_bonus_gsheet): wks_bonus.append_row([titolo, link, timestamp])
         
       list_of_lists_tappe.sort(key = lambda row: row[2]) #ordina lista di liste
