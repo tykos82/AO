@@ -1,5 +1,5 @@
 Flask==0.12
 gunicorn==19.6.0
-BeautifulSoup
+BeautifulSoup4
 requests
 gspread
