@@ -56,7 +56,7 @@ def estrai_numerogiornata(titolo):
     """
     Cerca nella stringa titolo il numero della giornata e lo converte in formato 0000
     """
-    regex = ur"(?<=day )[0-9]*"
+    regex = r"(?<=day )[0-9]*"
     numero_puro = re.search(regex, titolo, re.UNICODE)
    # print numero_puro.group(0)
     
@@ -69,7 +69,7 @@ def estrai_numerogiornata(titolo):
 
 def prova():
   test_str = "14 maggio 2002, day 12, 23:50 GMT+5: Treno n10 Baikal Express da Mosca a Irkutsk, linea Transiberiana - Day 2"
-  regex = ur"day [0-9]*"
+  regex = r"day [0-9]*"
   matches = re.findall(regex, test_str)
   print matches[0]
  
