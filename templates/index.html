@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Asia Overland 2002</title>
+      <!-- <link rel="stylesheet" type="text/css" href="../stile.css"> -->
+      <style type="text/css">body {
+	margin:40px auto;
+	max-width:850px;
+	line-height:1.6;
+	font-size:18px;
+	color:#444;
+	padding:0 10px
+}
+
+h1,h2,h3{
+	line-height:1.2
+}
+
+a {
+  transition: color .4s;
+  color: #265C83;
+  text-decoration: none;
+}
+
+a:link,
+a:visited { color: #265C83; }
+a:hover   { color: #66d4ff; }
+a:active  {
+  transition: color .3s;
+  color: #007BE6;
+}
+</style>
+  </head>
+  <body>
+  <header>
+    <h1>Asia Overland 2002: il diario integrale di viaggio</h1>
+    <aside>167 giorni attraverso 22 Paesi: Transiberiana, Gobi, Friendship Highway, Everest, Karakoram Highway, Via della Seta.<br>di Carlo Paschetto su <em>frenf.it</em></aside>
+  </header>
+    <h2>Note introduttive e bonus tracks</h2>
+    <ul>
+      {% for titolo in listabonus %}
+    
+          <li><a href="{{ titolo[1] }}">{{ titolo[0] }}</a></li>
+
+      {% endfor %}
+    </ul>
+   
+    <h2>Il diario di viaggio</h2>
+    <ul>
+      {% for titolo in lista %}
+    
+          <li><a href="{{ titolo[1] }}">{{ titolo[0] }}</a></li>
+
+      {% endfor %}
+    </ul> 
+  <script><!-- google analytics --></script> 
+  </body>
+</html>
