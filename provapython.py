@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(0, 'lib')
-import urllib
+import urllib.request
 import re
 #import HTMLParser
 
@@ -96,23 +96,23 @@ def provapython():
 
   #### update_sheet(wks, list_of_lists) # aggiornamento riordinato del foglio google sheets
         
-  url = 'https://www.frenf.it/earlyadopters/rss/AsiaOverland2002'
-  res = urllib.urlopen(url)
-  html = res.read()
-
+  with urllib.request.urlopen("https://www.frenf.it/earlyadopters/rss/AsiaOverland2002") as url:
+    html = url.read()
+  
+  #---Python 2.7 
+  #url = 'https://www.frenf.it/earlyadopters/rss/AsiaOverland2002'
+  #res = urllib.urlopen(url)
+  #html = res.read()
+  #---end python 2.7
+  
   soup = BeautifulSoup(html, 'xml')
 
   giornata = soup.findAll('item')
-
   for ognigiornata in giornata:
     if ognigiornata.creator.string == 'orizzontintorno':
       titolo = ognigiornata.title.string
-      #print titolo
       link = 'https://www.frenf.it' + ognigiornata.link.string
-      #print link
       timestamp = ognigiornata.date.string
-      #print timestamp
-      #numero_quattrocifre = estrai_numerogiornata(titolo)
       if ((ognigiornata.title.string[:1].isdigit())):
         numero_quattrocifre = estrai_numerogiornata(titolo)
         #print "AA" + numero_quattrocifre
@@ -122,9 +122,11 @@ def provapython():
       else: #(link not in elenco_bonus_gsheet):
         #print "OK"
         if (link not in elenco_bonus_gsheet): wks_bonus.append_row([titolo, link, timestamp])
-        
-      list_of_lists_tappe.sort(key = lambda row: row[2]) #ordina lista di liste
-      list_of_lists_bonus.sort(key = lambda row: row[2]) #ordina lista di liste bonus
+  
+  list_of_lists_tappe = wks_tappe.get_all_values() # crea lista di liste
+  list_of_lists_bonus = wks_bonus.get_all_values() # crea lista di liste
+  list_of_lists_tappe.sort(key = lambda row: row[2]) #ordina lista di liste
+  list_of_lists_bonus.sort(key = lambda row: row[2]) #ordina lista di liste bonus
       
   return list_of_lists_tappe, list_of_lists_bonus
   

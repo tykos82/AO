@@ -3,3 +3,5 @@ gunicorn==19.6.0
 BeautifulSoup4
 requests
 gspread
+oauth2client
+lxml
